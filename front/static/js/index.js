@@ -1,5 +1,7 @@
 // write the actual client side router
 import Dashboard from "./views/Dashboard.js"
+import Posts from "./views/Posts.js"
+import Settings from "./views/Settings.js"
 
 const navigateTo = (url) => {
   history.pushState(null, null, url)
@@ -8,8 +10,8 @@ const navigateTo = (url) => {
 const router = async () => {
   const routes = [
     { path: "/", view: Dashboard },
-    { path: "/posts", view: () => console.log("Viewing Posts") },
-    { path: "/settings", view: () => console.log("Viewing Settings") },
+    { path: "/posts", view: Posts },
+    { path: "/settings", view: Settings },
   ]
 
   // Test each route for potential match
