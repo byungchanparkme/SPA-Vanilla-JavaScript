@@ -1,4 +1,9 @@
 // write the actual client side router
+
+const navigateTo = (url) => {
+  history.pushState(null, null, url)
+}
+
 const router = async () => {
   const routes = [
     { path: "/", view: () => console.log("Viewing Dashboard") },
@@ -23,9 +28,21 @@ const router = async () => {
       isMatch: true,
     }
   }
-  console.log(match.route.view())
+  match.route.view()
 }
 
+// when clicks backToPage buttons, it works
+window.addEventListener("popstate", router)
+
 document.addEventListener("DOMContentLoaded", () => {
+  // event delegation
+  document.body.addEventListener("click", (e) => {
+    // if e.target has the attribute "data-link" then,
+    if (e.target.matches("[data-link]")) {
+      e.preventDefault()
+      navigateTo(e.target.href)
+      router()
+    }
+  })
   router()
 })
