@@ -1,7 +1,7 @@
 // write the actual client side router
 import Dashboard from "./views/Dashboard.js"
 import Posts from "./views/Posts.js"
-import PostView from "./views/PostView.js";
+import PostView from "./views/PostView.js"
 import Settings from "./views/Settings.js"
 
 const pathToRegex = (path) => new RegExp("^" + path.replace(/\//g, "\\/").replace(/:\w+/g, "(.+)") + "$")
@@ -53,6 +53,8 @@ const router = async () => {
 
   document.querySelector("#app").innerHTML = await view.getHtml()
 }
+
+
 
 // when clicks backToPage buttons, it works
 window.addEventListener("popstate", router)
